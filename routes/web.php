@@ -32,4 +32,5 @@ Route::post('/employee/store', 'EmployeeController@store')->middleware('auth');
 
 Route::get('/product/create', 'ProductController@create')->middleware('auth');
 Route::post('/product/store', 'ProductController@store')->middleware('auth');
+Route::get('/product/manage', 'ProductController@index')->middleware('auth');
 Route::get('/product/ajax-form-field/{id}', 'ProductController@ajaxFormField')->middleware('auth');

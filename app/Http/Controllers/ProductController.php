@@ -20,7 +20,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data['products'] = Product::with('category', 'subCategory', 'productValue')->get();
+        return view('admin.pages.product.manage-product')->with($data);
+
     }
 
     /**

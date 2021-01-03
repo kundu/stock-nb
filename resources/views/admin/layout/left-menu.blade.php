@@ -73,6 +73,9 @@
                 <li class="sub-item">
                     <a href="{{ URL::to('/product/create') }}" class="sub-link">Add Product</a>
                 </li>
+                <li class="sub-item">
+                    <a href="{{ URL::to('/product/manage') }}" class="sub-link">Manage Product</a>
+                </li>
             </ul>
         </li>
 
