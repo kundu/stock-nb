@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+}
+
+.condonav {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 100px;
+    padding-right: 0px;
+}
+
+.condonav .condologo {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    cursor: pointer;
+}
+
+.condonav .condologo img {
+    height: 50px;
+    cursor: pointer;
+}
+
+.condonav .nav-items {
+    display: flex;
+    flex: 1;
+    padding: 0 0 0 40px;
+}
+
+.condonav .nav-items li {
+    list-style: none;
+    padding: 0 15px;
+}
+
+.condonav .nav-items li a {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.condonav .nav-items li a:hover {
+    color: #0975b6;
+}
+
+.condonav form {
+    display: flex;
+    height: 70px;
+    padding: 10px;
+    background: #0975b6;
+    min-width: 25% !important;
+    border-radius: 0px 0px 0px 166px;
+}
+
+.condonav .condobutton {
+    padding: 0px 10px;
+    color: black;
+    font-size: 16px;
+    color: white;
+    border: 1px solid white;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+.condonav .menu-icon,
+.condonav .cancel-icon,
+.condonav .search-icon {
+    width: 40px;
+    text-align: center;
+    margin: 0 50px;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+    display: none;
+}
+
+.condonav .menu-icon span,
+.condonav .cancel-icon,
+.condonav .search-icon {
+    display: none;
+}
+
+
+/* Dropdown */
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dd-button {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 10px 30px 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dd-button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgb(255, 255, 255);
+}
+
+.dd-input {
+    display: none;
+}
+
+.dd-menu {
+    position: absolute;
+    top: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0;
+    margin: 2px 0 0 0;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    list-style-type: none;
+}
+
+.dd-input+.dd-menu {
+    display: none;
+}
+
+.dd-input:checked+.dd-menu {
+    display: block;
+}
+
+.dd-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dd-menu li:hover {
+    background-color: #f6f6f6;
+}
+
+.dd-menu li a {
+    display: block;
+    margin: -10px -20px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.dd-menu li.divider {
+    padding: 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+@media (max-width: 1245px) {
+    .condonav {
+        padding: 0 50px;
+    }
+    .condonav .condobutton {
+        border: 1px solid #1e232b;
+        margin-left: 0%;
+    }
+    .condonav form {
+        display: flex;
+        height: 70px;
+        padding: 10px;
+        background: none;
+        min-width: 25% !important;
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .condonav {
+        padding: 0px;
+    }
+    .condonav .condologo {
+        flex: 2;
+        text-align: center;
+    }
+    .condonav .nav-items {
+        position: fixed;
+        z-index: 99;
+        top: 70px;
+        width: 100%;
+        left: -100%;
+        height: 100%;
+        padding: 10px 50px 0 50px;
+        text-align: center;
+        background: white;
+        display: inline-block;
+        transition: left 0.3s ease;
+    }
+    .condonav .nav-items.active {
+        left: 0px;
+    }
+    .condonav .nav-items li {
+        line-height: 40px;
+        margin: 30px 0;
+    }
+    .condonav .nav-items li a {
+        font-size: 20px;
+    }
+    .condonav form {
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: top 0.3s ease, opacity 0.1s ease;
+    }
+    .condonav form.active {
+        top: 95px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .condonav form:before {
+        position: absolute;
+        content: "";
+        top: 5px;
+        right: 0px;
+        width: 0;
+        height: 0;
+        z-index: -1;
+        border: 10px solid transparent;
+        border-bottom-color: #1e232b;
+        margin: -20px 0 0;
+    }
+    .condonav form:after {
+        position: absolute;
+        content: '';
+        height: 60px;
+        padding: 2px;
+        background: #1e232b;
+        border-radius: 2px;
+        min-width: calc(100% + 20px);
+        z-index: -2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .condonav .condobutton {
+        border: 1px solid #1e232b;
+        margin-left: 0%;
+    }
+    .condonav .menu-icon {
+        display: block;
+    }
+    .condonav .search-icon,
+    .condonav .menu-icon span {
+        display: block;
+    }
+    .condonav .menu-icon span.hide,
+    .condonav .search-icon.hide {
+        display: none;
+    }
+    .condonav .cancel-icon.show {
+        display: block;
+    }
+}
+
+.condonav .condologo.space {
+    color: red;
+    padding: 0 5px 0 0;
+}
+
+@media (max-width: 980px) {
+    .condonav .menu-icon,
+    .condonav .cancel-icon,
+    .condonav .search-icon {
+        margin: 0 0px;
+    }
+    .condonav form {
+        display: flex;
+        height: 70px;
+        padding: 10px;
+        background: none;
+        min-width: 25% !important;
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+
+@media (max-width: 360px) {
+    .condonav .menu-icon,
+    .condonav .cancel-icon,
+    .condonav .search-icon {
+        margin: 0 10px;
+        font-size: 20px;
+    }
+    .condonav .condologo {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -1px;
+    }
+    .condonav .condologo img {
+        height: 40px;
+        width: 50%;
+    }
+}
+
+
+/*Newslater Section*/
+
+.back {
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: rgb(11, 118, 182);
+    background: linear-gradient(180deg, rgba(11, 118, 182, 1) 0%, rgba(43, 66, 129, 1) 100%);
+    opacity: .8;
+}
+
+.condo_7th_h1 {
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 30px;
+    color: white;
+    padding-top: 15px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.condo_7th_p {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
+    margin-top: -10px;
+    text-transform: uppercase;
+}
+
+.input-group {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@media (max-width: 575.98px) {
+    .back {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .condo_7th_h1 {
+        font-size: 18px;
+    }
+    .condo_7th_p {
+        font-size: 18px;
+    }
+    .input-group {
+        padding: 0;
+    }
+}
+
+
+/*Footer*/
+
+
+/* Footer */
+
+section {
+    padding: 20px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+#footer h5 {
+    padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+#footer a {
+    color: black;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.social li {
+    padding: 3px 0;
+}
+
+#footer ul.social li a i {
+    margin-right: 5px;
+    font-size: 25px;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+#footer ul.social li:hover a i {
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+#footer ul.social li a,
+#footer ul.quick-links li a {
+    color: black;
+}
+
+#footer ul.social li a:hover {
+    color: #eeeeee;
+}
+
+#footer ul.quick-links li {
+    padding: 3px 0;
+    -webkit-transition: .5s all ease;
+    -moz-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+#footer ul.quick-links li:hover {
+    padding: 3px 0;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+#footer ul.quick-links li a i {
+    margin-right: 5px;
+}
+
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px) {
+    #footer ul.social li a i {
+        font-size: 20px;
+    }
+    #footer .h6 {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,235 @@
+body
+{
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+
+.container-fluid{
+  width: 100%;
+  padding-top: 70px;
+  height: 100%;
+}
+
+
+.backdrop {
+	background-image: url("../image/Untitled-1-02.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin: auto;
+	width: 100%;
+	height:100%;
+}
+
+.text {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 35px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	border: 0px solid;
+	padding:100px;
+	text-transform: uppercase;
+}
+
+
+/*Second Section*/
+
+.container-fluid1
+{
+  width: 100%;
+  padding: 30px 100px;
+  background-color: #f7f7f7;
+}
+
+.about_h1
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 25px;
+	color: #2f2f2f;
+	text-align: left;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.about_p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: #828282;
+	text-align: justify;
+}
+
+.about_list
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.about_list ul li
+{
+	list-style-type: none;
+	padding-bottom: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #828282;
+}
+
+.about_list ul li i
+{
+	color: #0975b6;
+	font-size: 16px;
+}
+
+
+@media (max-width: 575.98px)
+{
+	.container-fluid1
+{
+  width: 100%;
+  padding: 30px 0px;
+  background-color: #f7f7f7;
+}
+
+.text {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	padding: 70px;
+
+}
+
+.about_h1
+{
+	font-size: 20px;
+}
+
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px)
+{
+}
+
+@media (min-width: 768px) and (max-width: 991.98px)
+{
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px)
+{
+}
+
+/*Third Section*/
+
+.container-fluid2
+{
+  width: 100%;
+  padding: 30px 100px;
+}
+
+.about_2nd_h1
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	color: #2f2f2f;
+	text-align: left;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.about_img
+{
+	width: 100%;
+
+	border-radius: 10px;
+}
+
+.blockquote-custom {
+  position: relative;
+  font-size: 1.1rem;
+  margin-top: 60px;
+}
+
+.blockquote-custom-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -25px;
+  left: 50px;
+}
+
+@media (max-width: 575.98px)
+{
+.container-fluid2
+{
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.about_2nd_h1
+{
+	font-size: 20px;
+}
+
+.btn-lg
+{
+	padding: 5px 10px !important;
+	font-size: 16px !important;
+}
+
+}
+
+
+/*Forth Section*/
+
+.btn-primary
+{
+	background-color: #0975b6 !important;
+	border-radius: 5px !important;
+}
+
+.about_team_h1
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	color: #2f2f2f;
+	text-align: left;
+}
+
+.about_team_p
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #828282;
+	text-align: left;
+}
+
+
+.about_team1
+{
+	padding: 30px;
+	background-color: #f7f7f7;
+}
+
+.about_stats_p
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	color: #2f2f2f;
+}
+
+.progress
+{
+	margin-bottom: 25px;
+}
+
+.progress
+{
+	background-color: #999999 !important;
+}
