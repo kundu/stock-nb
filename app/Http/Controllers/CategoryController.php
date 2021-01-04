@@ -115,7 +115,7 @@ class CategoryController extends Controller
             $categoryFormField->save();
         }
         Alert::success('Success', 'Category!');
-        return redirect()->back();
+        return redirect('/category/manage');
     }
 
     /**

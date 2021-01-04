@@ -114,7 +114,7 @@
               <th>#</th>
               <th>Sub Category Name</th>
               <th>Parent Category Name</th>
-              <th>Action</th>
+              {{-- <th>Action</th> --}}
             </tr>
           </thead>
           <tbody>
@@ -129,7 +129,7 @@
                     <td>
                          {{ $item->category->name }}
                     </td>
-                    <td>
+                    {{-- <td>
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:2px !important; padding-bottom:2px !important;">
                         Action</button>
@@ -137,7 +137,7 @@
                             <a class="dropdown-item" href="{{ URL::to('/admin/property/edit').'/'.$item->id }}">Edit</a>
                         </div>
                     </div>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
 

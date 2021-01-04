@@ -74,7 +74,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title'] = "Employee Edit";
+        $data['employee'] = Employee::with('region')->find($id);
+        $data['regions'] = Region::get();
+        return view('admin.pages.employee.edit')->with($data);
     }
 
     /**
@@ -84,9 +87,15 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $employee = Employee::find($request->id);
+        $employee->username = $request->username;
+        $employee->region_id = $request->region_id;
+        $employee->save();
+
+        Alert::success('Success', 'Employee is Updated!');
+        return redirect('/employee/manage');
     }
 
     /**

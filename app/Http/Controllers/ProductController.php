@@ -118,7 +118,7 @@ class ProductController extends Controller
             $productValue->save();
         }
         Alert::success('Success', 'Product Is Updated!');
-        return redirect()->back();
+        return redirect('/product/manage');
     }
 
     /**

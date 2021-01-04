@@ -49,14 +49,15 @@
     <!-- br-pageheader -->
     <div class="br-pagetitle">
         <div>
-            <h4>Add Employee</h4>
+            <h4>Edit Employee</h4>
         </div>
     </div>
     <!-- d-flex -->
 
     <div class="br-pagebody">
-        <form class="br-section-wrapper" method="post"   action="{{ URL::to('/employee/store') }}">
+        <form class="br-section-wrapper" method="post"   action="{{ URL::to('/employee/update') }}">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <input type="hidden" name="id" value="{{ $employee->id }}">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -67,6 +68,7 @@
                             type="text"
                             name="username"
                             required="required"
+                            value="{{ $employee->username }}"
                             placeholder="Enter Employee Username">
                     </div>
                 </div>
@@ -76,9 +78,13 @@
                         <label class="form-control-label">Select Region:
                             <span class="tx-danger">*</span></label>
                             <select class="js-example-basic-multiple form-control" required name="region_id">
-                                <option value="" disabled selected>Select Region</option>
+                                <option value="" disabled>Select Region</option>
                                 @foreach ($regions as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @if ($employee->region->id == $item->id)
+                                        <option selected value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                     </div>
@@ -87,62 +93,13 @@
 
             <!-- row -->
             <div class="form-layout-footer mg-t-30">
-                <button class="btn btn-info" type="submit">Submit</button>
+                <button class="btn btn-info" type="submit">Update</button>
             </div>
             <!-- form-layout-footer -->
         </form>
     </div>
 
 
-
-    <div class="br-pagetitle">
-      <div>
-        <h4>Employee List</h4>
-        <p class="mg-b-0">Go to action for editing</p>
-      </div>
-    </div><!-- d-flex -->
-
-    <div class="br-pagebody">
-      <div class="br-section-wrapper">
-        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Employee Id</th>
-              <th>Employee Username</th>
-              <th>Region</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            @php
-                $count = 1;
-            @endphp
-            @foreach ($employees as $item)
-                <tr>
-                    <td>{{ $count++ }}</td>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->username }}</td>
-                    <td>
-                         {{ $item->region->name }}
-                    </td>
-                    <td>
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:2px !important; padding-bottom:2px !important;">
-                        Action</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="{{ URL::to('/employee/edit').'/'.$item->id }}">Edit</a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>
-            @endforeach
-
-          </tbody>
-        </table>
-      </div>
-    </div>
     @include('admin.layout.footer')
   </div>
   <!-- ########## END: MAIN PANEL ########## -->

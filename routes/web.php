@@ -30,7 +30,9 @@ Route::get('/master-data/region/manage', 'MasterDataController@region')->middlew
 Route::post('/master-data/region/store', 'MasterDataController@createRegion')->middleware('auth');
 
 Route::get('/employee/manage', 'EmployeeController@index')->middleware('auth');
+Route::get('/employee/edit/{id}', 'EmployeeController@edit')->middleware('auth');
 Route::post('/employee/store', 'EmployeeController@store')->middleware('auth');
+Route::post('/employee/update', 'EmployeeController@update')->middleware('auth');
 
 Route::get('/product/create', 'ProductController@create')->middleware('auth');
 Route::post('/product/store', 'ProductController@store')->middleware('auth');
