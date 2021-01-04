@@ -19,7 +19,9 @@ Route::post('/login-check', 'LoginController@loginCheck');
 
 
 Route::get('/category/manage', 'CategoryController@index')->middleware('auth');
+Route::get('/category/edit/{id}', 'CategoryController@edit')->middleware('auth');
 Route::post('/category/store', 'CategoryController@store')->middleware('auth');
+Route::post('/category/update', 'CategoryController@update')->middleware('auth');
 Route::get('/category/ajax/sub-category/{id}', 'CategoryController@ajaxSubCategory')->middleware('auth');
 Route::get('/category/sub-category/manage', 'CategoryController@manageSubCategory')->middleware('auth');
 Route::post('/category/sub/store', 'CategoryController@storeSub')->middleware('auth');

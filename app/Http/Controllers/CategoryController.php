@@ -88,7 +88,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title'] = "Edit Category";
+        $data['category'] = Category::with('formField')->find($id);
+        $data['form_fields'] = FormField::get();
+        return view('admin.pages.category.edit')->with($data);
     }
 
     /**
@@ -98,9 +101,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $category = Category::find($request->id);
+        $category->name = $request->name;
+        $category->save();
+        CategoryFormField::where('category_id', $request->id)->delete();
+        $formFields = $request->formFields;
+        foreach ($formFields as $key => $value) {
+            $categoryFormField = new CategoryFormField();
+            $categoryFormField->category_id = $request->id;
+            $categoryFormField->form_field_id = $formFields[$key];
+            $categoryFormField->save();
+        }
+        Alert::success('Success', 'Category!');
+        return redirect()->back();
     }
 
     /**

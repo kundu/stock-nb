@@ -49,14 +49,15 @@
     <!-- br-pageheader -->
     <div class="br-pagetitle">
         <div>
-            <h4>Create Category</h4>
+            <h4>Edit Category</h4>
         </div>
     </div>
     <!-- d-flex -->
 
     <div class="br-pagebody">
-        <form class="br-section-wrapper" method="post"   action="{{ URL::to('/category/store') }}">
+        <form class="br-section-wrapper" method="post"   action="{{ URL::to('/category/update') }}">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <input type="hidden" name="id" value="{{ $category->id }}">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -66,10 +67,17 @@
                             class="form-control"
                             type="text"
                             name="name"
+                            value="{{ $category->name }}"
                             required="required"
                             placeholder="Enter Category Name">
                     </div>
                 </div>
+
+                @foreach ($category->formField as $item2)
+                    @php
+                        $fields[] = $item2->name;
+                    @endphp
+                @endforeach
 
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -78,7 +86,11 @@
                             <select class="js-example-basic-multiple form-control" required name="formFields[]" multiple="multiple">
                                 <option value="" disabled>Select fields</option>
                                 @foreach ($form_fields as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @if (in_array($item->name, $fields))
+                                        <option selected value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                     </div>
@@ -87,64 +99,12 @@
 
             <!-- row -->
             <div class="form-layout-footer mg-t-30">
-                <button class="btn btn-info" type="submit">Submit</button>
+                <button class="btn btn-info" type="submit">Update</button>
             </div>
             <!-- form-layout-footer -->
         </form>
     </div>
 
-
-
-    <div class="br-pagetitle">
-      <div>
-        <h4>Category List</h4>
-        <p class="mg-b-0">Go to action for editing</p>
-      </div>
-    </div><!-- d-flex -->
-
-    <div class="br-pagebody">
-      <div class="br-section-wrapper">
-        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Category Name</th>
-              <th>Feilds</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            @php
-                $count = 1;
-            @endphp
-            @foreach ($categories as $item)
-                <tr>
-                    <td>{{ $count++ }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>
-                        <ul>
-                            @foreach ($item->formField as $item2)
-                                <li>{{ $item2->name }}</li>
-                            @endforeach
-                        </ul>
-                    </td>
-                    <td>
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:2px !important; padding-bottom:2px !important;">
-                        Action</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="{{ URL::to('/category/edit').'/'.$item->id }}">Edit</a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>
-            @endforeach
-
-          </tbody>
-        </table>
-      </div>
-    </div>
     @include('admin.layout.footer')
   </div>
   <!-- ########## END: MAIN PANEL ########## -->
