@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Mirrored from themepixels.me/demo/bracketplus1.4/app/template/index.html by
-    HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Oct 2020 06:03:33 GMT -->
+
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">

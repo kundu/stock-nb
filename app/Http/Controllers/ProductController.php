@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\CategoryFormField;
 use App\Models\Product;
 use App\Models\ProductValue;
+use App\Models\FormField;
 use Alert;
 use Exception;
 use DB;
@@ -20,6 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $data['title'] = "Manage Product";
         $data['products'] = Product::with('category', 'subCategory', 'productValue')->get();
         return view('admin.pages.product.manage-product')->with($data);
 
@@ -47,9 +49,6 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
-
-            // dd($request);
-
             $product = new Product();
             $product->category_id = $request->category_id;
             $product->sub_category_id = $request->sub_category_id;
@@ -93,7 +92,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title'] = "Edit Product";
+        $data['product'] = Product::with('productValue')->find($id);
+        $formField = FormField::get();
+        $formFieldArray = [];
+        foreach ($formField as $value) {
+            $formFieldArray[$value->id] = $value;
+        }
+        $data['formFieldArray'] = $formFieldArray;
+        return view('admin.pages.product.edit')->with($data);
     }
 
     /**
@@ -103,9 +110,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        foreach ($request->fields as $key => $value) {
+            $productValue = ProductValue::find($key);
+            $productValue->value = $value;
+            $productValue->save();
+        }
+        Alert::success('Success', 'Product Is Updated!');
+        return redirect()->back();
     }
 
     /**
@@ -121,7 +134,6 @@ class ProductController extends Controller
 
     public function ajaxFormField($category_id){
         $data['formFeilds'] = CategoryFormField::with('formField')->where('category_id', $category_id)->get();
-        // dd($data['formFeilds']);
         return view('admin.pages.product.ajax-other-field')->with($data);
     }
 }
