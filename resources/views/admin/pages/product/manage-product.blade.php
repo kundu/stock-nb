@@ -87,6 +87,7 @@
                         Action</button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href="{{ URL::to('/product/edit').'/'.$item->id }}">Edit</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure?')" href="{{ URL::to('/product/delete').'/'.$item->id }}">Delete</a>
                         </div>
                     </div>
                     </td>

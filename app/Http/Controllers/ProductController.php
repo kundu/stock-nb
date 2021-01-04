@@ -129,7 +129,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ProductValue::where('product_id', $id)->delete();
+        product::where('id', $id)->delete();
+        Alert::toast('Product is deleted!', 'info');
+        return redirect()->back();
     }
 
     public function ajaxFormField($category_id){
