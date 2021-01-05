@@ -28,6 +28,9 @@ Route::post('/category/sub/store', 'CategoryController@storeSub')->middleware('a
 
 Route::get('/master-data/region/manage', 'MasterDataController@region')->middleware('auth');
 Route::post('/master-data/region/store', 'MasterDataController@createRegion')->middleware('auth');
+Route::get('/master-data/form/manage', 'MasterDataController@form')->middleware('auth');
+Route::post('/master-data/form/store', 'MasterDataController@createForm')->middleware('auth');
+
 
 Route::get('/employee/manage', 'EmployeeController@index')->middleware('auth');
 Route::get('/employee/edit/{id}', 'EmployeeController@edit')->middleware('auth');

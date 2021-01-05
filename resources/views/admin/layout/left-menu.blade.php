@@ -74,6 +74,10 @@
                 <li class="sub-item">
                     <a href="{{ URL::to('/master-data/region/manage') }}" class="sub-link">Manage Region</a>
                 </li>
+
+                <li class="sub-item">
+                    <a href="{{ URL::to('/master-data/form/manage') }}" class="sub-link">Manage Form</a>
+                </li>
             </ul>
         </li>
 
