@@ -12286,7 +12286,10 @@ textarea.parsley-success:focus {
     border-radius: 2px;
     background-color: #0866C6;
     color: #fff;
-    line-height: 1.45; }
+    line-height: 1.45;
+
+    display: block;
+}
   .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     color: #fff;
     opacity: .5;
@@ -12294,7 +12297,8 @@ textarea.parsley-success:focus {
     display: inline-block;
     position: absolute;
     top: 4px;
-    left: 7px; }
+    left: 7px;
+}
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #ced4da; }
