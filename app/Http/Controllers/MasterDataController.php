@@ -30,10 +30,23 @@ class MasterDataController extends Controller
         }
     }
 
+    public function editRegion($id){
+        $data["title"] = "Edit Region";
+        $data["region"] = Region::find($id);
+        return view('admin.pages.master-data.edit-region')->with($data);
+    }
+
+    public function updateRegion(Request $request){
+        $region= Region::find($request->id);
+        $region->name = $request->name;
+        $region->save();
+        Alert::success('Success', 'Region is updated!');
+        return redirect('/master-data/region/manage');
+    }
+
     public function form(){
         $data['formFields'] = FormField::get();
         $data["title"] = "Manage Form";
-        // $data["region"] = Region::get();
         return view('admin.pages.master-data.manage-form')->with($data);
     }
 
